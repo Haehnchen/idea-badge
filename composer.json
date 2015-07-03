@@ -13,8 +13,8 @@
     },
     "autoload": {
         "psr-4": {
-            "espend\\IdeaBadge": "src/IdeaBadge",
-            "espend\\IdeaBadgeBundle": "src/IdeaBadgeBundle"
+            "espend\\IdeaBadge\\": "src/IdeaBadge",
+            "espend\\IdeaBadgeBundle\\": "src/IdeaBadgeBundle"
         }
     },
     "extra": {

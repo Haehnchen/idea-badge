@@ -1,0 +1,22 @@
+services:
+
+    espend.idea_badge.poser.provider.poser_downloads:
+        class: espend\IdeaBadge\Poser\Provider\PoserDownloads
+        arguments: [ @espend_idea_badge.poser.http.intellij_plugin_html_parser, @espend_idea_badge.poser.utils.text_normalizer ]
+        public: false
+        tags:
+            -  { name: espend_idea_badge.poser }
+
+    espend.idea_badge.poser.provider.poser_last_month:
+        class: espend\IdeaBadge\Poser\Provider\PoserLastMonth
+        arguments: [ @espend_idea_badge.poser.http.intellij_plugin_html_parser, @espend_idea_badge.poser.utils.text_normalizer ]
+        public: false
+        tags:
+            -  { name: espend_idea_badge.poser }
+
+    espend.idea_badge.poser.provider.poser_version:
+        class: espend\IdeaBadge\Poser\Provider\PoserVersion
+        arguments: [ @espend_idea_badge.poser.http.intellij_plugin_html_parser ]
+        public: false
+        tags:
+            -  { name: espend_idea_badge.poser }

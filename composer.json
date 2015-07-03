@@ -1,0 +1,25 @@
+{
+    "name": "espend/idea-badge",
+    "description": "Provides badges support for statistics of IntelliJ IDEA / PhpStorm Plugin Repository with the help of Poser library.",
+    "authors": [
+        {
+            "name": "Daniel Espendiller",
+            "email": "daniel@espendiller.net"
+        }
+    ],
+    "require": {
+        "badges/poser": "^1.1",
+        "symfony/symfony": "~2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "espend\\IdeaBadge": "src/IdeaBadge",
+            "espend\\IdeaBadgeBundle": "src/IdeaBadgeBundle"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

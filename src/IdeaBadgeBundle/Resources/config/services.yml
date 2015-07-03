@@ -1,0 +1,33 @@
+services:
+
+    espend_idea_badge.generator_manager:
+        class: espend\IdeaBadge\Poser\PoserGeneratorManager
+
+    espend_idea_badge.poser.http.intellij_plugin_html_parser:
+        class: espend\IdeaBadge\Intellij\IntellijPluginHtmlParser
+        arguments: ["%kernel.cache_dir%/poser-badges"]
+        public: false
+
+    espend_idea_badge_bundle.badge.controller:
+        class: espend\IdeaBadgeBundle\Controller\BadgeController
+        arguments: [@espend_idea_badge.generator_manager, @espend_idea_badge.poser, %espend_idea_badge.badge_lifetime%]
+
+    espend_idea_badge.poser.utils.text_normalizer:
+        class: espend\IdeaBadge\Poser\Utils\TextNormalizer
+        public: false
+
+    espend_idea_badge.poser_render:
+        class: PUGX\Poser\Render\SvgFlatRender
+        public: false
+
+    espend_idea_badge.poser:
+        class: PUGX\Poser\Poser
+        arguments: [ [@espend_idea_badge.poser_render] ]
+        public: false
+
+    espend_idea_badge.routing_loader:
+        class: espend\IdeaBadgeBundle\Routing\PoserRoutingLoader
+        arguments: [%espend_idea_badge.badge_controller%, %espend_idea_badge.route_path%, %espend_idea_badge.poser_provider_names%]
+        tags:
+            - { name: routing.loader }
+

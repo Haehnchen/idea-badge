@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('%kernel.cache_dir%/poser-badges')
                 ->end()
                 ->scalarNode('route_path')
-                    ->defaultValue('/badges/{id}/{provider}')
+                    ->defaultValue('/badge/{id}/{provider}')
                 ->end()
                 ->scalarNode('badge_controller')
                     ->defaultValue('espend_idea_badge_bundle.badge.controller:showAction')

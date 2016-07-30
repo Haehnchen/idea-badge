@@ -17,6 +17,11 @@
             "espend\\IdeaBadgeBundle\\": "src/IdeaBadgeBundle"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "espend\\IdeaBadge\\Tests": "tests/"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"

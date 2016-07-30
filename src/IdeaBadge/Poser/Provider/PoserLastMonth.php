@@ -12,7 +12,6 @@ use espend\IdeaBadge\Poser\Utils\TextNormalizer;
  */
 class PoserLastMonth implements PoserGeneratorInterface
 {
-
     /**
      * @var IntellijPluginHtmlParser
      */
@@ -23,6 +22,10 @@ class PoserLastMonth implements PoserGeneratorInterface
      */
     private $normalizer;
 
+    /**
+     * @param IntellijPluginHtmlParser $parser
+     * @param TextNormalizer $normalizer
+     */
     public function __construct(IntellijPluginHtmlParser $parser, TextNormalizer $normalizer)
     {
         $this->parser = $parser;
@@ -34,7 +37,6 @@ class PoserLastMonth implements PoserGeneratorInterface
      */
     public function getPoser($id)
     {
-
         $content = explode("\n", $this->parser->get('downloadStatistic/csv?pluginId=' . $id . '&updateId=&period=month'));
 
         return new PoserBadge(
@@ -44,13 +46,16 @@ class PoserLastMonth implements PoserGeneratorInterface
         );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getName()
     {
         return 'last-month';
     }
 
     /**
-     * @param $csvLines
+     * @param array $csvLines
      * @return string
      */
     private function formatDownloads(array $csvLines)

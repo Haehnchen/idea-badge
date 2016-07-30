@@ -11,7 +11,6 @@ use Symfony\Component\Routing\RouteCollection;
  */
 class PoserRoutingLoader extends Loader
 {
-
     /**
      * @var bool
      */
@@ -39,9 +38,11 @@ class PoserRoutingLoader extends Loader
         $this->controllerName = $controllerName;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function load($resource, $type = null)
     {
-
         if (true === $this->loaded) {
             throw new \RuntimeException('Do not add the "espend_poser" loader twice');
         }
@@ -54,13 +55,12 @@ class PoserRoutingLoader extends Loader
         }
 
         foreach($this->providerNames as $provider) {
-
-            $route = new Route(str_replace('{provider}', $provider, $this->path), array(
+            $route = new Route(str_replace('{provider}', $provider, $this->path), [
                 '_controller' => $this->controllerName,
                 'provider' => $provider,
-            ), array(
+            ], [
                 'id' => '(\d){1,5}',
-            ));
+            ]);
 
             $routes->add('espend_idea_' . preg_replace("/[^\\w]/", '_', $provider), $route);
         }
@@ -68,6 +68,9 @@ class PoserRoutingLoader extends Loader
         return $routes;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function supports($resource, $type = null)
     {
         return 'espend_idea_badge' === $type;

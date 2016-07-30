@@ -11,12 +11,14 @@ use espend\IdeaBadge\Poser\PoserGeneratorInterface;
  */
 class PoserVersion implements PoserGeneratorInterface
 {
-
     /**
      * @var IntellijPluginHtmlParser
      */
     private $parser;
 
+    /**
+     * @param IntellijPluginHtmlParser $parser
+     */
     public function __construct(IntellijPluginHtmlParser $parser)
     {
         $this->parser = $parser;
@@ -27,15 +29,29 @@ class PoserVersion implements PoserGeneratorInterface
      */
     public function getPoser($id)
     {
-
-        $version = trim($this->parser->filter('plugin/' . $id, '.version_table tr:nth-child(2) td:first-child'));
-        if (strlen($version) == 0) {
-            $version = 'n/a';
+        if(!$json = json_decode($this->parser->get('plugin/updates?pluginId='. $id .'&start=0&size=1'), true)) {
+            return $this->createBadge('n/a');
         }
 
-        return new PoserBadge('version', $version, '2D9BD1');
+        if(!isset($json['updates'][0]['updateVersion'])) {
+            return $this->createBadge('n/a');
+        }
+
+        return $this->createBadge($json['updates'][0]['updateVersion']);
     }
 
+    /**
+     * @param string $text
+     * @return PoserBadge
+     */
+    private function createBadge($text)
+    {
+        return new PoserBadge('version', $text, '2D9BD1');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public static function getName()
     {
         return 'version';

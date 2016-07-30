@@ -43,3 +43,11 @@ espend_idea_badge:
     route_path:           '/badges/{id}/{provider}'
     badge_controller:     'espend_idea_badge_bundle.badge.controller:showAction'
 ```
+
+## Urls
+
+```
+/badge/{pluginId}/downloads
+/badge/{pluginId}/last-month
+/badge/{pluginId}/version
+```

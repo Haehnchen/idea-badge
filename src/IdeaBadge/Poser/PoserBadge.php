@@ -8,10 +8,26 @@ namespace espend\IdeaBadge\Poser;
 class PoserBadge
 {
 
+    /**
+     * @var string
+     */
     private $subject;
+
+    /**
+     * @var string
+     */
     private $status;
+
+    /**
+     * @var string
+     */
     private $color;
 
+    /**
+     * @param string $subject
+     * @param string $status
+     * @param string $color
+     */
     public function __construct($subject, $status, $color)
     {
         $this->subject = $subject;

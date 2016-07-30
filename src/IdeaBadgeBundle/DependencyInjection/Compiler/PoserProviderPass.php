@@ -7,16 +7,22 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
+ * Lazy compiler pass for poser names
+ *
  * @author Daniel Espendiller <daniel@espendiller.net>
  */
 class PoserProviderPass implements CompilerPassInterface
 {
-
+    /**
+     * @var string
+     */
     private $interface = 'espend\IdeaBadge\Poser\PoserGeneratorInterface';
 
+    /**
+     * {@inheritdoc}
+     */
     public function process(ContainerBuilder $container)
     {
-
         if (!$container->hasDefinition('espend_idea_badge.generator_manager')) {
             return;
         }

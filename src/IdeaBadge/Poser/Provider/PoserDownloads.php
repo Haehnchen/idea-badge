@@ -12,16 +12,20 @@ use espend\IdeaBadge\Poser\Utils\TextNormalizer;
  */
 class PoserDownloads implements PoserGeneratorInterface
 {
-
     /**
      * @var IntellijPluginHtmlParser
      */
     private $parser;
+
     /**
      * @var TextNormalizer
      */
     private $normalizer;
 
+    /**
+     * @param IntellijPluginHtmlParser $parser
+     * @param TextNormalizer $normalizer
+     */
     public function __construct(IntellijPluginHtmlParser $parser, TextNormalizer $normalizer)
     {
         $this->parser = $parser;
@@ -33,24 +37,20 @@ class PoserDownloads implements PoserGeneratorInterface
      */
     public function getPoser($id)
     {
-
-        $downloads = $this->parser->filter('plugin/' . $id, '#main .rating .label');
-        if (preg_match('#downloads[:]*\s*(\d+)#i', $downloads, $result)) {
-            $formatted = $this->normalizer->normalize($result[1]);
-        } else {
-            $formatted = 'n/a';
+        $formatted = 'n/a';
+        if($downloads = $this->parser->filter('plugin/' . $id, '.plugin-info__downloads')) {
+            // "4 645"
+            $formatted = $this->normalizer->normalize(str_replace(' ', '', trim($downloads)));
         }
 
-        return new PoserBadge(
-            'downloads',
-            $formatted,
-            '097ABB'
-        );
+        return new PoserBadge('downloads', $formatted, '097ABB');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getName()
     {
         return 'downloads';
     }
-
 }

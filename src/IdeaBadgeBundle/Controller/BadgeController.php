@@ -29,6 +29,11 @@ class BadgeController extends Controller
      */
     private $poser;
 
+    /**
+     * @param PoserGeneratorManager $manager
+     * @param Poser $poser
+     * @param int $badgeLifetime
+     */
     public function __construct(PoserGeneratorManager $manager, Poser $poser, $badgeLifetime)
     {
         $this->manager = $manager;
@@ -43,7 +48,6 @@ class BadgeController extends Controller
      */
     public function showAction($id, $provider)
     {
-
         // this handled by routing loader, but not throw error in this conditional case here
         if (null === $poserProvider = $this->manager->get($provider)) {
             throw new NotFoundHttpException(sprintf('Provider for badge "%s" not found', $provider));
@@ -58,10 +62,10 @@ class BadgeController extends Controller
             'flat'
         );
 
-        return new Response($content, 200, array(
+        return new Response($content, 200, [
             'Cache-Control' => 's-maxage='. $this->badgeLifetime .', public',
             'Content-Disposition' => sprintf('inline; filename="%s-%s.svg"', $provider, $id),
             'Content-Type' => 'image/svg+xml;charset=utf-8',
-        ));
+        ]);
     }
 }

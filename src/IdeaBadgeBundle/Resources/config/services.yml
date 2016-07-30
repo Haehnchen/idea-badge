@@ -5,7 +5,7 @@ services:
 
     espend_idea_badge.poser.http.intellij_plugin_html_parser:
         class: espend\IdeaBadge\Intellij\IntellijPluginHtmlParser
-        arguments: ["%kernel.cache_dir%/poser-badges"]
+        arguments: ["@cache.app"]
         public: false
 
     espend_idea_badge_bundle.badge.controller:

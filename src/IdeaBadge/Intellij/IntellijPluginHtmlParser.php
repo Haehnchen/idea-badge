@@ -2,6 +2,7 @@
 
 namespace espend\IdeaBadge\Intellij;
 
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
@@ -19,21 +20,24 @@ class IntellijPluginHtmlParser
     /**
      * @var string
      */
-    private $cacheDir;
-
-    /**
-     * @var string
-     */
     private $host;
 
     /**
-     * @param string $cacheDir
+     * @var CacheItemPoolInterface
+     */
+    private $cacheItemPool;
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
      * @param string $host
      */
-    public function __construct($cacheDir, $host = 'https://plugins.jetbrains.com/')
+    public function __construct(
+        CacheItemPoolInterface $cacheItemPool,
+        $host = 'https://plugins.jetbrains.com/'
+    )
     {
-        $this->cacheDir = rtrim($cacheDir, '/');
         $this->host = $host;
+        $this->cacheItemPool = $cacheItemPool;
     }
 
     /**
@@ -45,26 +49,22 @@ class IntellijPluginHtmlParser
     public function get($url)
     {
         $url = $this->host . $url;
+        $hash = 'url-parser' . md5($url);
 
-        $hash = md5($url);
-
-        $filename = $this->cacheDir . '/' . $hash;
-
-        if (is_file($filename) && time() - filemtime($filename) < $this->lifetime) {
-            return file_get_contents($filename);
+        $cache = $this->cacheItemPool->getItem($hash);
+        if($cache->isHit()) {
+            return $cache->get();
         }
 
-        if ($content = file_get_contents($url)) {
+        // no error handling; trust and cache every request
+        $content = @file_get_contents($url);
 
-            if (!is_dir(dirname($filename))) {
-                mkdir(dirname($filename));
-            }
+        $cache->set($content);
+        $cache->expiresAfter($this->lifetime);
 
-            file_put_contents($filename, $content);
-            return $content;
-        }
+        $this->cacheItemPool->save($cache);
 
-        return null;
+        return $content;
     }
 
     /**

@@ -39,7 +39,6 @@ espend_poser_extra:
 
 espend_idea_badge:
     badge_lifetime:       3600
-    cache_dir:            '%kernel.cache_dir%/poser-badges'
     route_path:           '/badges/{id}/{provider}'
     badge_controller:     'espend_idea_badge_bundle.badge.controller:showAction'
 ```

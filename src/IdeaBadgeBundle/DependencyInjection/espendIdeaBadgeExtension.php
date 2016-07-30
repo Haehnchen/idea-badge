@@ -20,7 +20,7 @@ class espendIdeaBadgeExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        foreach(['badge_lifetime', 'cache_dir', 'route_path', 'badge_controller'] as $cfg) {
+        foreach(['badge_lifetime', 'route_path', 'badge_controller'] as $cfg) {
             $container->setParameter('espend_idea_badge.' . $cfg, $config[$cfg]);
         }
 

@@ -10,7 +10,7 @@ use espend\IdeaBadge\Poser\Utils\TextNormalizer;
 class PoserLastMonthTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers espend\IdeaBadge\Poser\Provider\PoserLastMonth::getPoser
+     * @covers \espend\IdeaBadge\Poser\Provider\PoserLastMonth::getPoser
      */
     public function testThatLastMonthEndpointIsSupported()
     {
@@ -29,7 +29,7 @@ class PoserLastMonthTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers espend\IdeaBadge\Poser\Provider\PoserLastMonth::getPoser
+     * @covers \espend\IdeaBadge\Poser\Provider\PoserLastMonth::getPoser
      */
     public function testThatLastMonthErrorIsNotAvailable()
     {

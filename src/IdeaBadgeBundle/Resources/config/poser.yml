@@ -2,14 +2,14 @@ services:
 
     espend.idea_badge.poser.provider.poser_downloads:
         class: espend\IdeaBadge\Poser\Provider\PoserDownloads
-        arguments: [ '@espend_idea_badge.poser.http.intellij_plugin_html_parser', '@espend_idea_badge.poser.utils.text_normalizer' ]
+        arguments: [ '@espend_idea_badge.poser.http.intellij_plugin_html_parser', '@espend_idea_badge.poser.utils.text_normalizer', '@event_dispatcher' ]
         public: false
         tags:
             -  { name: espend_idea_badge.poser }
 
     espend.idea_badge.poser.provider.poser_last_month:
-        class: espend\IdeaBadge\Poser\Provider\PoserLastMonth
-        arguments: [ '@espend_idea_badge.poser.http.intellij_plugin_html_parser', '@espend_idea_badge.poser.utils.text_normalizer' ]
+        class: espend\IdeaBadge\Poser\Provider\PoserLastMonthStatic
+        arguments: [ '@espend.idea_badge.poser.provider.poser_last_month_storage', '@espend_idea_badge.poser.utils.text_normalizer' ]
         public: false
         tags:
             -  { name: espend_idea_badge.poser }
@@ -20,3 +20,13 @@ services:
         public: false
         tags:
             -  { name: espend_idea_badge.poser }
+
+    espend_idea_badge.listener.montly_backup_listener:
+        class: espend\IdeaBadgeBundle\Listener\MontlyBackupListener
+        arguments: ['@espend.idea_badge.poser.provider.poser_last_month_storage']
+        tags:
+          - { name: kernel.event_subscriber }
+
+    espend.idea_badge.poser.provider.poser_last_month_storage:
+        class: espend\IdeaBadge\Poser\Provider\PoserLastMonthStorage
+        arguments: ["%espend_idea_badge.monthly_storage_path%"]

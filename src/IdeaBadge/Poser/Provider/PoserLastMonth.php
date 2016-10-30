@@ -9,6 +9,7 @@ use espend\IdeaBadge\Poser\Utils\TextNormalizer;
 
 /**
  * @author Daniel Espendiller <daniel@espendiller.net>
+ * @deprecated JetBrains fixed this security issue, we only have access to our plugin now ;)
  */
 class PoserLastMonth implements PoserGeneratorInterface
 {

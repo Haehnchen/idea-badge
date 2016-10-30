@@ -4,6 +4,7 @@ namespace espend\IdeaBadge\Tests\Poser\Provider;
 
 use espend\IdeaBadge\Poser\Provider\PoserDownloads;
 use espend\IdeaBadge\Poser\Utils\TextNormalizer;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
  * @author Daniel Espendiller <daniel@espendiller.net>
@@ -21,7 +22,7 @@ class PoserDownloadsTest extends \PHPUnit_Framework_TestCase
 
         $parser->method('filter')->willReturn("\t \n  \t 4 00333    \t \n");
 
-        $poser = new PoserDownloads($parser, new TextNormalizer());
+        $poser = new PoserDownloads($parser, new TextNormalizer(), new EventDispatcher());
 
         static::assertEquals(
             '400.33 k',

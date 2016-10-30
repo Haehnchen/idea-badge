@@ -41,6 +41,7 @@ espend_idea_badge:
     badge_lifetime:       3600
     route_path:           '/badges/{id}/{provider}'
     badge_controller:     'espend_idea_badge_bundle.badge.controller:showAction'
+    monthly_storage_path: '%kernel.root_dir%/../var/badge_monthly_storage_path.json'
 ```
 
 ## Urls

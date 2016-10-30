@@ -29,6 +29,9 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('badge_controller')
                     ->defaultValue('espend_idea_badge_bundle.badge.controller:showAction')
                 ->end()
+                ->scalarNode('monthly_storage_path')
+                    ->isRequired()
+                ->end()
             ->end()
         ;
 

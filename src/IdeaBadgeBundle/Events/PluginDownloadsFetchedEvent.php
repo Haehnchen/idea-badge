@@ -4,6 +4,9 @@ namespace espend\IdeaBadgeBundle\Events;
 
 use Symfony\Component\EventDispatcher\Event;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 class PluginDownloadsFetchedEvent extends Event
 {
     /**

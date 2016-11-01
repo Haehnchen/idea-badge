@@ -19,8 +19,18 @@ class PoserLastMonthStorageTest extends \PHPUnit_Framework_TestCase
     {
         $storage = new PoserLastMonthStorage($this->temp);
 
-        static::assertEquals(15, $storage->fetch('7311'));
+        static::assertEquals(5, $storage->fetch('7311'));
         static::assertContains(7311, $storage->keys());
+    }
+
+    /**
+     * @covers \espend\IdeaBadge\Poser\Provider\PoserLastMonthStorage::fetch
+     */
+    public function testThatLastMonthInvalidatesToNotAvailable()
+    {
+        $storage = new PoserLastMonthStorage($this->temp);
+
+        static::assertNull($storage->fetch('8312'));
     }
 
     /**
@@ -42,8 +52,12 @@ class PoserLastMonthStorageTest extends \PHPUnit_Framework_TestCase
     {
         $contents = [
             '7311' => [
+                date_create()->modify('-2 month')->format('Y-m') => 10,
                 date_create()->modify('-1 month')->format('Y-m') => 15,
-                date_create()->format('Y-m') => 20,
+            ],
+            '8312' => [
+                date_create()->modify('-2 month')->format('Y-m') => 15,
+                date_create()->modify('-1 month')->format('Y-m') => 10,
             ],
         ];
 

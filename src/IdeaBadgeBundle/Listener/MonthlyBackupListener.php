@@ -7,7 +7,10 @@ use espend\IdeaBadgeBundle\espendIdeaBadgeEvents;
 use espend\IdeaBadgeBundle\Events\PluginDownloadsFetchedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class MontlyBackupListener implements EventSubscriberInterface
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
+class MonthlyBackupListener implements EventSubscriberInterface
 {
     /**
      * @var PoserLastMonthStorage

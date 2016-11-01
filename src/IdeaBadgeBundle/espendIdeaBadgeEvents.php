@@ -2,6 +2,9 @@
 
 namespace espend\IdeaBadgeBundle;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 final class espendIdeaBadgeEvents
 {
     /**

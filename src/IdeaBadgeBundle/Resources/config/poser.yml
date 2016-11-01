@@ -22,7 +22,7 @@ services:
             -  { name: espend_idea_badge.poser }
 
     espend_idea_badge.listener.montly_backup_listener:
-        class: espend\IdeaBadgeBundle\Listener\MontlyBackupListener
+        class: espend\IdeaBadgeBundle\Listener\MonthlyBackupListener
         arguments: ['@espend.idea_badge.poser.provider.poser_last_month_storage']
         tags:
           - { name: kernel.event_subscriber }

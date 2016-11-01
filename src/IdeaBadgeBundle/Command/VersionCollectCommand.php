@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 class VersionCollectCommand extends ContainerAwareCommand
 {
     /**

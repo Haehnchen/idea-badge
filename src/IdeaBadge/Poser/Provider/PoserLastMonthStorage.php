@@ -2,6 +2,9 @@
 
 namespace espend\IdeaBadge\Poser\Provider;
 
+/**
+ * @author Daniel Espendiller <daniel@espendiller.net>
+ */
 class PoserLastMonthStorage
 {
     /**
@@ -25,10 +28,15 @@ class PoserLastMonthStorage
     public function fetch($id)
     {
         $lastMonth = date_create()->modify('-1 month')->format('Y-m');
+        $prevMonth = date_create()->modify('-2 month')->format('Y-m');
 
         $content = $this->getContent();
-        if (isset($content[$id][$lastMonth])) {
-            return $content[$id][$lastMonth];
+        if (!isset($content[$id][$lastMonth], $content[$id][$prevMonth])) {
+            return null;
+        }
+
+        if(($value = $content[$id][$lastMonth] - $content[$id][$prevMonth]) > 0) {
+            return $value;
         }
 
         return null;

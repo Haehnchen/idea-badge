@@ -12,5 +12,7 @@ final class espendIdeaBadgeEvents
      */
     const DOWNLOADS_FETCHED = 'espend_idea_badge.downloads_fetched';
 
-    private function __constructor() {}
+    private function __construct()
+    {
+    }
 }

@@ -27,8 +27,10 @@ class PoserLastMonthStorage
      */
     public function fetch($id)
     {
-        $lastMonth = date_create()->modify('-1 month')->format('Y-m');
-        $prevMonth = date_create()->modify('-2 month')->format('Y-m');
+        $lastMonthDay = date_create()->modify('first day of last month');
+        
+        $lastMonth = $lastMonthDay->format('Y-m');
+        $prevMonth = $lastMonthDay->modify('-1 month')->format('Y-m');
 
         $content = $this->getContent();
         if (!isset($content[$id][$lastMonth], $content[$id][$prevMonth])) {

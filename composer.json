@@ -19,7 +19,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "espend\\IdeaBadge\\Tests": "tests/"
+            "espend\\IdeaBadge\\Tests\\": "tests/"
         }
     },
     "extra": {

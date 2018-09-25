@@ -33,11 +33,11 @@ class PoserVersion implements PoserGeneratorInterface
             return $this->createBadge('n/a');
         }
 
-        if(!isset($json['updates'][0]['updateVersion'])) {
+        if(!isset($json['updates'][0]['version'])) {
             return $this->createBadge('n/a');
         }
 
-        return $this->createBadge($json['updates'][0]['updateVersion']);
+        return $this->createBadge($json['updates'][0]['version']);
     }
 
     /**

@@ -1,5 +1,7 @@
 espendIdeaBadge
 =================
+
+[![Build Status](https://travis-ci.org/Haehnchen/idea-badge.svg?branch=master)](https://travis-ci.org/Haehnchen/idea-badge)
 [![Total Downloads](https://poser.pugx.org/espend/idea-badge/downloads.png)](https://packagist.org/packages/espend/idea-badge)
 [![Latest Stable Version](https://poser.pugx.org/espend/idea-badge/v/stable.png)](https://packagist.org/packages/espend/idea-badge)
 

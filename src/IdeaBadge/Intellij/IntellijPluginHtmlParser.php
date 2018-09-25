@@ -3,7 +3,6 @@
 namespace espend\IdeaBadge\Intellij;
 
 use Psr\Cache\CacheItemPoolInterface;
-use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * @author Daniel Espendiller <daniel@espendiller.net>
@@ -65,26 +64,5 @@ class IntellijPluginHtmlParser
         $this->cacheItemPool->save($cache);
 
         return $content;
-    }
-
-    /**
-     * Filter content url by css selector
-     *
-     * @param string $url
-     * @param string $selector css selector
-     * @return string|null;
-     */
-    public function filter($url, $selector)
-    {
-        if(!$content = $this->get($url)) {
-            return null;
-        }
-
-        $result = (new Crawler($content))->filter($selector);
-        if($result->count() == 0) {
-            return null;
-        }
-
-        return $result->text();
     }
 }

@@ -65,19 +65,22 @@ class PoserDownloads implements PoserGeneratorInterface
      */
     private function getDownloads($id)
     {
-        if($downloads = $this->parser->filter('plugin/' . $id, '.plugin-info__downloads')) {
-            // "4 645"
-            $downloads = str_replace(' ', '', trim($downloads));
-
-            $this->dispatcher->dispatch(
-                espendIdeaBadgeEvents::DOWNLOADS_FETCHED,
-                new PluginDownloadsFetchedEvent($id, $downloads)
-            );
-
-            return $this->normalizer->normalize($downloads);
+        if(!$json = json_decode($this->parser->get('plugin/getPluginInfo?pluginId='. $id), true)) {
+            return null;
         }
 
-        return null;
+        if(!isset($json['downloadsCount'])) {
+            return null;
+        }
+
+        $downloads = $json['downloadsCount'];
+
+        $this->dispatcher->dispatch(
+            espendIdeaBadgeEvents::DOWNLOADS_FETCHED,
+            new PluginDownloadsFetchedEvent($id, $downloads)
+        );
+
+        return $this->normalizer->normalize($downloads);
     }
 
     /**

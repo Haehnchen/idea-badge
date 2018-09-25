@@ -20,12 +20,14 @@ class PoserDownloadsTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $parser->method('filter')->willReturn("\t \n  \t 4 00333    \t \n");
+        $parser->method('get')->willReturn(
+            file_get_contents(__DIR__ . '/Fixtures/getPluginInfo.json')
+        );
 
         $poser = new PoserDownloads($parser, new TextNormalizer(), new EventDispatcher());
 
         static::assertEquals(
-            '400.33 k',
+            '2.73 M',
             $poser->getPoser('foobar')->getStatus()
         );
     }

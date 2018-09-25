@@ -51,3 +51,9 @@ espend_idea_badge:
 /badge/{pluginId}/last-month
 /badge/{pluginId}/version
 ```
+
+## Run tests
+
+```
+vendor/bin/phpunit tests/
+```

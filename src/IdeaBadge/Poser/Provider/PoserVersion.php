@@ -29,11 +29,11 @@ class PoserVersion implements PoserGeneratorInterface
      */
     public function getPoser($id)
     {
-        if(!$json = json_decode($this->parser->get('plugin/updates?pluginId='. $id .'&start=0&size=1'), true)) {
+        if (!$json = json_decode($this->parser->get('api/plugins/'. urlencode($id) .'/updates'), true)) {
             return $this->createBadge('n/a');
         }
 
-        if(!isset($json['updates'][0]['version'])) {
+        if (!isset($json['updates'][0]['version'])) {
             return $this->createBadge('n/a');
         }
 

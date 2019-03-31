@@ -52,12 +52,12 @@ class PoserLastMonthStorageTest extends \PHPUnit_Framework_TestCase
     {
         $contents = [
             '7311' => [
-                date_create()->modify('-2 month')->format('Y-m') => 10,
-                date_create()->modify('-1 month')->format('Y-m') => 15,
+                date_create()->modify('first day of this month')->modify('-2 month')->format('Y-m') => 10,
+                date_create()->modify('first day of this month')->modify('-1 month')->format('Y-m') => 15,
             ],
             '8312' => [
-                date_create()->modify('-2 month')->format('Y-m') => 15,
-                date_create()->modify('-1 month')->format('Y-m') => 10,
+                date_create()->modify('first day of this month')->modify('-2 month')->format('Y-m') => 15,
+                date_create()->modify('first day of this month')->modify('-1 month')->format('Y-m') => 10,
             ],
         ];
 

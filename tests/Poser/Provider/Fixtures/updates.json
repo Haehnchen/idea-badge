@@ -1,20 +1,15 @@
-{
-  "total": 159,
-  "totalByChannel": 159,
-  "updatesSize": 1,
-  "updates": [
-    {
-      "id": 27348,
-      "approve": true,
-      "cdate": "24.07.2016",
-      "downloadUrl": null,
-      "file": "7219/27348/symfony2-plugin.jar",
-      "notes": "",
-      "size": "1MB",
-      "sinceUntil": "145",
-      "version": "0.12.123",
-      "channel": "",
-      "downloads": -1
-    }
-  ]
-}
+[
+  {
+    "id": 27348,
+    "approve": true,
+    "cdate": "24.07.2016",
+    "downloadUrl": null,
+    "file": "7219/27348/symfony2-plugin.jar",
+    "notes": "",
+    "size": "1MB",
+    "sinceUntil": "145",
+    "version": "0.12.123",
+    "channel": "",
+    "downloads": -1
+  }
+]

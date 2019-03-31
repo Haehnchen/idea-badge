@@ -9,9 +9,6 @@ use espend\IdeaBadge\Poser\Provider\PoserVersion;
  */
 class PoserVersionTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers espend\IdeaBadge\Poser\Provider\PoserVersion::getPoser
-     */
     public function testThatLastVersionEndpointIsSupported()
     {
         $parser = $this->getMockBuilder('espend\IdeaBadge\Intellij\IntellijPluginHtmlParser')

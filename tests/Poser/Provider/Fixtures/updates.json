@@ -1,20 +1,42 @@
-{
-  "total": 159,
-  "totalByChannel": 159,
-  "updatesSize": 1,
-  "updates": [
-    {
-      "id": 27348,
-      "approve": true,
-      "cdate": "24.07.2016",
-      "downloadUrl": null,
-      "file": "7219/27348/symfony2-plugin.jar",
-      "notes": "",
-      "size": "1MB",
-      "sinceUntil": "145",
-      "version": "0.12.123",
-      "channel": "",
-      "downloads": -1
+[
+  {
+    "id": 75117,
+    "link": "/plugin/7219-symfony-support/update/75117",
+    "version": "0.19.187",
+    "approve": true,
+    "listed": true,
+    "cdate": "1577525893000",
+    "file": "7219/75117/Symfony_Support-0.19.187.zip",
+    "notes": "\n<ul>\n    <li>Support shortcuts instances of \"Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController\" (Daniel Espendiller) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1401\">#1401</a> <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1405\">#1405</a></li>\n    <li>Support Symfony5 / DoctrineBundle 2 persistence library interface (Daniel Espendiller) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1401\">#1401</a> <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1404\">#1404</a></li>\n    <li>Support indexing of template assignment expression for Twig template names (Daniel Espendiller) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1400\">#1400</a></li>\n    <li>Added support for namespaced Twig classes (Marcel Rummens) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1394\">#1394</a></li>\n</ul>\n\n",
+    "since": "192.0",
+    "until": "0.0",
+    "sinceUntil": "192+",
+    "channel": "",
+    "size": 2100861,
+    "downloads": 15378,
+    "compatibleVersions": {
+      "PHPSTORM": "2019.2+",
+      "IDEA": "2019.2+"
     }
-  ]
-}
+  },
+  {
+    "id": 72062,
+    "link": "/plugin/7219-symfony-support/update/72062",
+    "version": "0.19.186",
+    "approve": true,
+    "listed": true,
+    "cdate": "1573406484000",
+    "file": "7219/72062/Symfony_Support-0.19.186.zip",
+    "notes": "\n<ul>\n    <li>Twig settings are not available while indexing (Ruud Kamphuis) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1393\">#1393</a></li>\n    <li>Fix browse folder buttons (Ruud Kamphuis) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1392\">#1392</a></li>\n    <li>WebDeploymentIcons.Download will be removed soon (Elena Shaverdova) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1390\">#1390</a></li>\n    <li>Support new snake_case templates (Ruud Kamphuis) <a href=\"https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1389\">#1389</a></li>\n</ul>\n\n",
+    "since": "192.0",
+    "until": "0.0",
+    "sinceUntil": "192+",
+    "channel": "",
+    "size": 2101279,
+    "downloads": 113522,
+    "compatibleVersions": {
+      "PHPSTORM": "2019.2+",
+      "IDEA": "2019.2+"
+    }
+  }
+]

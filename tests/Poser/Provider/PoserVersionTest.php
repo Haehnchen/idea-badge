@@ -23,7 +23,7 @@ class PoserVersionTest extends \PHPUnit_Framework_TestCase
         );
 
         static::assertEquals(
-            '0.12.123',
+            '0.19.187',
             (new PoserVersion($parser))->getPoser('7219')->getStatus()
         );
     }

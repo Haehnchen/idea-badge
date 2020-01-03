@@ -69,11 +69,11 @@ class PoserDownloads implements PoserGeneratorInterface
             return null;
         }
 
-        if(!isset($json['downloadsCount'])) {
+        if(!isset($json['downloads'])) {
             return null;
         }
 
-        $downloads = $json['downloadsCount'];
+        $downloads = $json['downloads'];
 
         $this->dispatcher->dispatch(
             espendIdeaBadgeEvents::DOWNLOADS_FETCHED,

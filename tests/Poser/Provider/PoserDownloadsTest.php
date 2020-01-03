@@ -27,7 +27,7 @@ class PoserDownloadsTest extends \PHPUnit_Framework_TestCase
         $poser = new PoserDownloads($parser, new TextNormalizer(), new EventDispatcher());
 
         static::assertEquals(
-            '2.73 M',
+            '3.72 M',
             $poser->getPoser('foobar')->getStatus()
         );
     }

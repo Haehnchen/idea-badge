@@ -65,7 +65,7 @@ class PoserDownloads implements PoserGeneratorInterface
      */
     private function getDownloads($id)
     {
-        if(!$json = json_decode($this->parser->get('plugin/getPluginInfo?pluginId='. $id), true)) {
+        if(!$json = json_decode($this->parser->get('api/plugins/'. urlencode($id)), true)) {
             return null;
         }
 
